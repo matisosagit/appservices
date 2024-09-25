@@ -5,8 +5,8 @@ const sesion = session({
     resave: false,
     saveUninitialized: true,
     cookie: { 
-        secure: false,  // Cambiar a true si usas HTTPS
-        httpOnly: true, // Protege la cookie de acceso desde el frontend
+        secure: false, 
+        httpOnly: true, 
         maxAge: 24 * 60 * 60 * 1000  // 1 día
     }
 });

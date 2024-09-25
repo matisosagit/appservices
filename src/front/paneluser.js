@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import FormularioUsuario from "./componentes/registroUsuarios.jsx";
 import FormularioInicio from "./componentes/iniciosesion.jsx";
 import FormCliente from "./componentes/crearCliente.jsx";
+import './paneluser.css';
 
-function ListaClientes() {
+
+
+function  ListaClientes() {
   const [clientes, setClientes] = useState([]);
   const [nombre, setNombre] = useState('');
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
@@ -24,7 +27,20 @@ function ListaClientes() {
       });
   }, []);
 
-  useEffect(() => {
+
+  const borrar = async (clienteId) =>{
+    try{
+      await fetch(`/api/clientes/eliminar/${clienteId}`,{
+        method: 'DELETE',
+        credentials: 'include'
+      })
+      setClientes(prevClientes => prevClientes.filter(cliente => cliente.id !== clienteId));
+    }catch(e){
+      console.error(e);
+    }
+  };
+
+  const fetchClientes = () => {
     fetch('/api/clientes/lista',{
       method: 'GET',
       credentials: 'include'
@@ -42,6 +58,10 @@ function ListaClientes() {
         console.log('Error al buscar clientes:', error);
         setClientes([]);
       });
+  };
+
+  useEffect(() => {
+    fetchClientes();
   }, []);
   
   
@@ -50,25 +70,36 @@ function ListaClientes() {
     setMostrarFormulario(true);
   };
 
+  const ocultarForm = () => {
+    setMostrarFormulario(false);
+  };
+
+  const agregarCliente = (nuevoCliente) => {
+    setClientes(prevClientes => [...prevClientes, nuevoCliente]); 
+  };
+
   if (!nombre) {
     return (
-      <div>
+      <div id="iddiv1">
         <FormularioInicio />
         <FormularioUsuario />
       </div>
     );
   } else {
     return (
-      <div>
-        <p>Hola, {nombre}</p>
-        <h1>LISTA DE CLIENTES</h1>
-        <button onClick={verCliente}>Añadir Cliente</button>
-        {mostrarFormulario && <FormCliente />}
+      <div className="paneladmin">
+        <h1>Hola, {nombre}</h1>
+        <p className="tituloadmin">LISTA DE CLIENTES</p>
+        <button className="btn2" onClick={verCliente}>Añadir Cliente</button>
+        {mostrarFormulario && <FormCliente agregarCliente={agregarCliente} ocultarForm={ocultarForm} />}
         
         <ul>
           {clientes.map(cliente => (
-            <li key={cliente.id}>
-              {cliente.nombre}
+            <li key={cliente.nombre} className="listacliente">
+              <span>{cliente.nombre}</span>
+              <span className="descripcioncliente">{cliente.descripcion}</span>
+              <span>{cliente.telefono}</span>
+              <button className="btn3" onClick={() => borrar(cliente.id, setClientes)}>Eliminar</button>
             </li>
           ))}
         </ul>

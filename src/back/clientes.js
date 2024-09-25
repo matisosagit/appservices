@@ -58,7 +58,7 @@ router.post('/crear-cliente', async (req,res)=>{
             descripcion: descripcion,
             telefono: telefono
         },
-        {fields:['nombre', 'descripcion',  'telefono']}
+        {fields:['usuario_id', 'nombre', 'descripcion',  'telefono']}
         );
         res.status(201).json({ message: 'Cliente creado exitosamente', cliente });
     } catch(error){
@@ -112,7 +112,7 @@ router.get('/lista', async (req, res) => {
 
 
 router.delete('/eliminar/:id', async(req,res) => {
-    const{id} = req.params;
+    const {id} = req.params;
 
     try{
         await Cliente.destroy({

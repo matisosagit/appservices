@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './registro.css';
 
 const FormularioUsuario = () => {
   const [nombre, setNombre] = useState('');
@@ -43,11 +44,11 @@ const FormularioUsuario = () => {
   };
 
   return (
-    <div>
+    <div className='center2'>
       <h1>Crear Usuario</h1>
       <form onSubmit={manejarEnvio}>
-        <div>
-          <label>Nombre:</label>
+        <div className='inputbox'>
+        <span>Nombre:</span>
           <input
             type="text"
             value={nombre}
@@ -55,8 +56,8 @@ const FormularioUsuario = () => {
             required
           />
         </div>
-        <div>
-          <label>Contraseña:</label>
+        <div className='inputbox'>
+        <span>Contraseña:</span>
           <input
             type="password"
             value={contraseña}
@@ -64,8 +65,8 @@ const FormularioUsuario = () => {
             required
           />
         </div>
-        <div>
-          <label>Correo:</label>
+        <div className='inputbox'>
+          <span>Correo:</span>
           <input
             type="email"
             value={correo}
@@ -73,7 +74,7 @@ const FormularioUsuario = () => {
             required
           />
         </div>
-        <button type="submit">Crear Usuario</button>
+        <button id='btn10' className='inputbox' type="submit">Crear Usuario</button>
       </form>
       {mensaje && <p>{mensaje}</p>}
     </div>

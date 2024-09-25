@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './formCliente.css';
 
-const FormCliente = () => {
+function FormCliente ({agregarCliente, ocultarForm}) {
   
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
@@ -30,12 +30,15 @@ const FormCliente = () => {
       const data = await respuesta.json();
       
       if (respuesta.ok) {
+        agregarCliente(data.cliente);
         setMensaje(data.message);
         setNombre('');
         setDescripcion('');
         setTelefono('');
+        ocultarForm();
       } else {
         setMensaje(data.message || 'Error al crear cliente');
+        ocultarForm();
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
