@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './registro.css';
 
-const FormularioUsuario = () => {
+function FormularioUsuario  ({agregarNombre, fetchClientes}) {
   const [nombre, setNombre] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [correo, setCorreo] = useState('');
@@ -34,6 +34,8 @@ const FormularioUsuario = () => {
         setNombre('');
         setContraseña('');
         setCorreo('');
+        agregarNombre(data.usuario.nombre);
+        fetchClientes();
       } else {
         setMensaje(data.message || 'Error al crear el usuario');
       }
@@ -74,7 +76,7 @@ const FormularioUsuario = () => {
             required
           />
         </div>
-        <button id='btn10' className='inputbox' type="submit">Crear Usuario</button>
+        <button id='btn11' className='inputbox' type="submit">Crear Usuario</button>
       </form>
       {mensaje && <p>{mensaje}</p>}
     </div>

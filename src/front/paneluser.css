@@ -38,7 +38,7 @@
     display: flex;
     list-style: none;
     margin: 1rem;
-    gap: 2rem;
+    gap: 3rem;
     height: fit-content;
     justify-content: space-between;
     justify-items:center;
@@ -53,6 +53,11 @@
     overflow-wrap: break-word;
     
 }
+
+.listacliente span{
+    flex: 1;
+}
+
 
 .btn2{
     max-width: 70%;
@@ -88,7 +93,7 @@
 .descripcioncliente {
     display: flex;
     position: relative;
-    max-width: 300px;
+    max-width: 250px;
     flex-wrap: wrap;
     flex-direction: column;
     overflow-wrap: break-word; 

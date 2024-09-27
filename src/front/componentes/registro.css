@@ -51,16 +51,20 @@
   font-family: sans-serif;
 }
 
-#btn10{
-  width: 100%;
+#btn11{
+  width: 80%;
   background: #5b88a5;
   color: #fff;
   border:2px solid #000000;
   border-radius: 30px;
-  transition: all .3s ease-in-out;
 }
 
-#btn10:hover {
-  background: linear-gradient(45deg, rgb(47, 137, 255), rgb(30, 255, 169));
-  transition: all .3s ease-in-out;
+#btn11:hover {
+  background: #243a69;
+  transition: all .3s;
+}
+
+#btn11:not(:hover){
+  background: #5b88a5;
+  transition: all .3s;
 }

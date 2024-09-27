@@ -11,7 +11,7 @@ function  ListaClientes() {
   const [nombre, setNombre] = useState('');
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
-  useEffect(() => {
+  const fetchNombre = () => {
     fetch('/api/usuarios/nombre',{
       method: 'GET',
       credentials: 'include'
@@ -25,7 +25,7 @@ function  ListaClientes() {
       .catch(error => {
         console.log('Error al obtener el nombre del usuario:', error);
       });
-  }, []);
+  };
 
 
   const borrar = async (clienteId) =>{
@@ -62,6 +62,7 @@ function  ListaClientes() {
 
   useEffect(() => {
     fetchClientes();
+    fetchNombre();
   }, []);
   
   
@@ -78,11 +79,15 @@ function  ListaClientes() {
     setClientes(prevClientes => [...prevClientes, nuevoCliente]); 
   };
 
+  const agregarNombre = (nombre) => {
+    setNombre(nombre);
+  };
+
   if (!nombre) {
     return (
       <div id="iddiv1">
-        <FormularioInicio />
-        <FormularioUsuario />
+        <FormularioInicio agregarNombre={agregarNombre} fetchClientes={fetchClientes} />
+        <FormularioUsuario agregarNombre={agregarNombre} fetchClientes={fetchClientes}/>
       </div>
     );
   } else {
@@ -94,8 +99,15 @@ function  ListaClientes() {
         {mostrarFormulario && <FormCliente agregarCliente={agregarCliente} ocultarForm={ocultarForm} />}
         
         <ul>
+            <li className="listacliente">
+              <span>Nombre</span>
+              <span>Descripción</span>
+              <span>Teléfono</span>
+              <span></span>
+            </li>
           {clientes.map(cliente => (
-            <li key={cliente.nombre} className="listacliente">
+            
+            <li  key={cliente.id} className="listacliente">
               <span>{cliente.nombre}</span>
               <span className="descripcioncliente">{cliente.descripcion}</span>
               <span>{cliente.telefono}</span>
