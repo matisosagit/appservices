@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
 
 .center2 {
-  display:flex;
+  display:block;
   position:relative;
-  width: 20%;
-  height: 50%;
-  padding: 30px;
+  width: 21rem;
+  max-height: 50%;
+  padding: 1rem;
   flex-direction: column;
   background: #fff;
   border-radius: 10px;
@@ -34,7 +34,7 @@
 .center2 .inputbox input {
   position: relative;
   top: 0;
-  left: 0;
+  left: 30px;
   width: 100%;
   border: 2px solid #000;
   background: none;
@@ -45,7 +45,7 @@
 .center2 .inputbox span {
   display: flex;
   position: relative;
-  left: 0;
+  left: 30px;
   top: 0;
   font-size: 0.9em;
   font-family: sans-serif;
@@ -67,4 +67,31 @@
 #btn11:not(:hover){
   background: #5b88a5;
   transition: all .3s;
+}
+
+@media screen and (max-width : 700px) {
+  .center2 {
+    width: 15rem;
+    height: auto;
+    overflow: auto;
+}
+.center2 h1 {
+  font-size: 1rem;
+}
+.center2 .inputbox {
+  width: 12rem;
+  height: 1.5rem;
+}
+.center2 .inputbox input {
+  width: 80%;
+}
+
+.center2 .inputbox span {
+  font-size: 0.75em;
+}
+
+#btn11{
+  width: 70%;
+}
+
 }

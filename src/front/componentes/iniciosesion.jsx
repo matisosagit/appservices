@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ingreso.css';
 
-function FormularioInicio ({agregarNombre, fetchClientes}) {
+function FormularioInicio ({agregarNombre, fetchClientes, fetchTelefono}) {
     const [nombre, setNombre] = useState('');
     const [contraseña, setContraseña] = useState('');
     const [mensaje, setMensaje] = useState('');
@@ -31,6 +31,7 @@ function FormularioInicio ({agregarNombre, fetchClientes}) {
                 setContraseña('');
                 agregarNombre(data.usuarioFind.nombre);
                 fetchClientes();
+                fetchTelefono();
             }else{
                 setMensaje(data.message || 'Error al iniciar sesión');
             }

@@ -51,7 +51,7 @@ function FormCliente ({agregarCliente, ocultarForm}) {
     <div id='formC'>
       <h1>Nuevo Cliente</h1>
       <form onSubmit={manejarEnvio}>
-        <div>
+        <div className='inputbox'>
           <label>Nombre:</label>
           <input
             type="text"
@@ -60,7 +60,7 @@ function FormCliente ({agregarCliente, ocultarForm}) {
             required
           />
         </div>
-        <div>
+        <div className='inputbox'>
           <label>Descripción:</label>
           <input
             type="text"
@@ -69,7 +69,7 @@ function FormCliente ({agregarCliente, ocultarForm}) {
             required
           />
         </div>
-        <div>
+        <div className='inputbox'>
           <label>Celular:</label>
           <input
             type="text"
@@ -78,7 +78,7 @@ function FormCliente ({agregarCliente, ocultarForm}) {
             required
           />
         </div>
-        <button type="submit">Crear Cliente</button>
+        <button id='btnN' className='inputbox' type="submit">Crear Cliente</button>
       </form>
       {mensaje && <p>{mensaje}</p>}
     </div>

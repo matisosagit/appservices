@@ -1,19 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
 
 .center {
-    display:flex;
-    position:relative;
-    width: 20%;
-    height: 50%;
-    padding: 30px;
+    display:block;
+    position: relative;
+    width: 21rem;
+    height: 50% auto;
+    padding: 1rem;
     flex-direction: column;
     background: #fff;
     border-radius: 10px;
     justify-content: center;
-    justify-items: center;
+    justify-items: end;
     align-items: center;
-    align-content: center;
-    overflow: auto;
+    align-content: flex-start;
+    overflow:auto;
 }
 .center h1 {
   font-size: 1.4rem;
@@ -26,15 +26,17 @@
   padding-left: 10px;
 }
 .center .inputbox {
-  position: relative;
   width: 15rem;
   height: 2rem;
   margin-bottom: 50px;
 }
 .center .inputbox input {
+  display: flex;
   position: relative;
+  justify-content: center;
+  justify-items: center;
+  left: 30px;
   top: 0;
-  left: 0;
   width: 100%;
   border: 2px solid #000;
   background: none;
@@ -45,7 +47,7 @@
 .center .inputbox span {
   display: flex;
   position: relative;
-  left: 0;
+  left: 30px;
   top: 0;
   font-size: 0.9em;
   font-family: sans-serif;
@@ -67,4 +69,30 @@
 #btn10:not(:hover){
   background: #5b88a5;
   transition: all .3s;
+}
+
+@media screen and (max-width : 700px) {
+  .center {
+    width: 15rem;
+    height: auto;
+}
+.center h1 {
+  font-size: 1rem;
+}
+.center .inputbox {
+  width: 12rem;
+  height: 1.5rem;
+}
+.center .inputbox input {
+  width: 80%;
+}
+
+.center .inputbox span {
+  font-size: 0.75em;
+}
+
+#btn10{
+  width: 70%;
+}
+
 }

@@ -34,6 +34,14 @@ let Cliente;
         allowNull: false,
         notEmpty: true,
         unique: true
+    },
+    estado: {
+        type: DataTypes.STRING,
+        allowNull: false, 
+        defaultValue: "Pendiente",
+        validate: {
+            isIn: [["Pendiente", "En Proceso", "Finalizado"]]
+        }
     }
     }, {
         tableName: 'clientes',
@@ -45,6 +53,7 @@ let Cliente;
 router.post('/crear-cliente', async (req,res)=>{
     const usuarioId = req.session.usuarioId;
     const{nombre, descripcion, telefono} = req.body;
+    const estadoC = "Pendiente";
 
     if (!usuarioId) {
         return res.status(401).json({ message: 'Usuario no autenticado' });
@@ -56,9 +65,9 @@ router.post('/crear-cliente', async (req,res)=>{
             usuario_id: usuarioId,
             nombre: nombre,
             descripcion: descripcion,
-            telefono: telefono
+            telefono: telefono,
+            estado: estadoC
         },
-        {fields:['usuario_id', 'nombre', 'descripcion',  'telefono']}
         );
         res.status(201).json({ message: 'Cliente creado exitosamente', cliente });
     } catch(error){
@@ -69,14 +78,15 @@ router.post('/crear-cliente', async (req,res)=>{
 
 router.put('/editar/:id', async (req,res) => {
     const{id} = req.params;
-    const{nombre, descripcion, telefono} = req.body;
+    const{nombre, descripcion, telefono, estado} = req.body;
 
     try{
         const clienteActualizado = await Cliente.update(
             {
                 nombre : nombre,
                 descripcion,
-                telefono : telefono
+                telefono : telefono,
+                estado: estado
             },
             {
                 where : {id : id}
@@ -102,7 +112,7 @@ router.get('/lista', async (req, res) => {
             }
         });
         console.log('Lista de clientes:', listaClientes);
-        res.json(listaClientes);
+        res.status(200).json({ message: 'Cliente editado exitosamente', listaClientes });
     } catch (error) {
         console.error('Error al obtener la lista de clientes:', error);
         res.status(500).json({ error: 'Error al obtener la lista de clientes' });

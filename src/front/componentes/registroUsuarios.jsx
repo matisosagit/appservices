@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './registro.css';
 
-function FormularioUsuario  ({agregarNombre, fetchClientes}) {
+function FormularioUsuario  ({agregarNombre, fetchClientes, fetchTelefono}) {
   const [nombre, setNombre] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [correo, setCorreo] = useState('');
+  const [telefono, setTelefono] = useState('');
   const [mensaje, setMensaje] = useState('');
 
   const manejarEnvio = async (e) => {
@@ -13,11 +14,12 @@ function FormularioUsuario  ({agregarNombre, fetchClientes}) {
     const nuevoUsuario = {
       nombre: nombre,
       contraseña: contraseña,
-      correo: correo
+      correo: correo,
+      telefono: telefono
     };
 
     try {
-      const respuesta = await fetch('/api/crear-usuario', {
+      const respuesta = await fetch('/api/usuarios/crear-usuario', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,8 +36,10 @@ function FormularioUsuario  ({agregarNombre, fetchClientes}) {
         setNombre('');
         setContraseña('');
         setCorreo('');
+        setTelefono('');
         agregarNombre(data.usuario.nombre);
         fetchClientes();
+        fetchTelefono();
       } else {
         setMensaje(data.message || 'Error al crear el usuario');
       }
@@ -73,6 +77,15 @@ function FormularioUsuario  ({agregarNombre, fetchClientes}) {
             type="email"
             value={correo}
             onChange={(e) => setCorreo(e.target.value)}
+            required
+          />
+        </div>
+        <div className='inputbox'>
+          <span>Celular:</span>
+          <input
+            type="text"
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
             required
           />
         </div>
