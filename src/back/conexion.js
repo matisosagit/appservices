@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 
 export default async function conectarBD() {
-    const sequelize = new Sequelize('database_db', 'root', 'mat1sql', {
+    const sequelize = new Sequelize('database', 'root', 'mat1sql', {
         host: 'localhost',
         dialect: 'mysql'
     });
