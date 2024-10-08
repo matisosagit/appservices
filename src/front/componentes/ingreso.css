@@ -1,48 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
 
 .center {
-    display:block;
-    position: relative;
-    width: 21rem;
-    height: 50% auto;
-    padding: 1rem;
-    flex-direction: column;
-    background: #fff;
-    border-radius: 10px;
-    justify-content: center;
-    justify-items: end;
-    align-items: center;
-    align-content: flex-start;
-    overflow:auto;
-}
-.center h1 {
-  font-size: 1.4rem;
-  border-left: 5px solid dodgerblue;
-  padding: 10px;
-  color: #000;
-  letter-spacing: 5px;
-  margin-bottom: 60px;
-  font-weight: bold;
-  padding-left: 10px;
-}
-.center .inputbox {
-  width: 15rem;
-  height: 2rem;
-  margin-bottom: 50px;
-}
-.center .inputbox input {
   display: flex;
-  position: relative;
-  justify-content: center;
-  justify-items: center;
-  left: 30px;
-  top: 0;
-  width: 100%;
-  border: 2px solid #000;
-  background: none;
-  padding: 10px;
+  flex-direction: column;
+  width: 21rem;
+  padding: 1.5rem;
+  background: #fff;
   border-radius: 10px;
+  align-items: center;
+  box-sizing: border-box;
 }
+
+.center h1 {
+  font-size: 1.4em;
+  border-left: 5px solid dodgerblue;
+  padding-left: 15px;
+  margin-bottom: 30px; 
+  color: #000;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.center .inputbox {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.center .inputbox input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#btn10 {
+  width: 90%;
+  margin-top: 20px;
+  padding: 10px;
+  background: #5b88a5;
+  color: #fff;
+  border:2px solid #000000;
+  border-radius: 30px;
+}
+
 
 .center .inputbox span {
   display: flex;
@@ -53,13 +52,6 @@
   font-family: sans-serif;
 }
 
-#btn10{
-  width: 80%;
-  background: #5b88a5;
-  color: #fff;
-  border:2px solid #000000;
-  border-radius: 30px;
-}
 
 #btn10:hover {
   background: #243a69;
@@ -71,28 +63,24 @@
   transition: all .3s;
 }
 
-@media screen and (max-width : 700px) {
+@media screen and (max-width: 700px) {
   .center {
-    width: 15rem;
-    height: auto;
-}
-.center h1 {
-  font-size: 1rem;
-}
-.center .inputbox {
-  width: 12rem;
-  height: 1.5rem;
-}
-.center .inputbox input {
-  width: 80%;
-}
+      width: 85%;
+  }
 
-.center .inputbox span {
-  font-size: 0.75em;
-}
+  .center h1 {
+      font-size: 1.2em;
+  }
 
-#btn10{
-  width: 70%;
-}
+  .center .inputbox {
+      width: 100%;
+  }
 
+  .center .inputbox input {
+      width: 90%;
+  }
+
+  #btn10 {
+      width: 85%;
+  }
 }

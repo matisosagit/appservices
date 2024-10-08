@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import './editCliente.css';
+import {X} from "phosphor-react";
 
-
-function EditarCliente ({id, nombree, descripcionn, cel}) {
+function EditarCliente ({ocultarFormCliente, fetchClientes,id, nombree, descripcionn, cel}) {
   
   const [nombre, setNombre] = useState(`${nombree}`);
   const [descripcion, setDescripcion] = useState(`${descripcionn}`);
@@ -37,6 +38,8 @@ function EditarCliente ({id, nombree, descripcionn, cel}) {
         setDescripcion('');
         setTelefono('');
         setEstado('');
+        ocultarFormCliente();
+        fetchClientes();
       } else {
         setMensaje(data.message || 'Error al editar el cliente');
       }
@@ -48,10 +51,10 @@ function EditarCliente ({id, nombree, descripcionn, cel}) {
   };
 
   return (
-    <div id='formC'>
-      <h1>Nuevo Cliente</h1>
+    <div id='formC2'>
+      <h1>Nuevo Cliente <X onClick={()=> ocultarFormCliente() } size={20} /></h1>
       <form onSubmit={manejarEnvio}>
-        <div>
+        <div className='inputbox'>
           <label>Nombre:</label>
           <input
             type="text"
@@ -60,7 +63,7 @@ function EditarCliente ({id, nombree, descripcionn, cel}) {
             required
           />
         </div>
-        <div>
+        <div className='inputbox'>
           <label>Descripción:</label>
           <input
             type="text"
@@ -69,7 +72,7 @@ function EditarCliente ({id, nombree, descripcionn, cel}) {
             required
           />
         </div>
-        <div>
+        <div className='inputbox'>
           <label>Celular:</label>
           <input
             type="text"
@@ -78,7 +81,7 @@ function EditarCliente ({id, nombree, descripcionn, cel}) {
             required
           />
         </div>
-        <div>
+        <div >
           <label>Estado:</label>
           <div>
             <label>
@@ -110,7 +113,7 @@ function EditarCliente ({id, nombree, descripcionn, cel}) {
             </label>
           </div>
         </div>
-        <button type="submit">Guardar Cambios</button>
+        <button id='btnN2' type="submit">Guardar Cambios</button>
       </form>
       {mensaje && <p>{mensaje}</p>}
     </div>

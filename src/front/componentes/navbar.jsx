@@ -4,8 +4,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {Users} from "phosphor-react";
 import logo from '../img/logosinfondo.png';
-import {List} from "phosphor-react"
-import {X} from "phosphor-react"
+import {List} from "phosphor-react";
+import {X} from "phosphor-react";
+import {IdentificationBadge} from "phosphor-react";
 
 
 
@@ -37,6 +38,7 @@ export  const Navbar = () => {
             <button className={`btncerrar ${barraVisible ? "visible" : ""}`} onClick={() => {cerrarBarra(); mostrarboton()}}><X size={32} color="#f1efef" /></button>
             <Link to="/" onClick={() => {cerrarBarra(); mostrarboton()}}  className={`nosub2 ${barraVisible ? "visible" : "" }`}>Inicio</Link>
             <Link to="/Clientes" onClick={() => {cerrarBarra(); mostrarboton()}} className={`nosub ${barraVisible ? "visible" : "" }`}><Users size={32} /></Link>
+            <Link to="/PanelCliente" onClick={() => {cerrarBarra(); mostrarboton()}} className={`nosub ${barraVisible ? "visible" : "" }`}><IdentificationBadge size={32} /></Link>
         </div>
     </div>
 }

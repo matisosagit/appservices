@@ -14,6 +14,7 @@ function  ListaClientes() {
   const [telefono, setTelefono] = useState('');
   const [clienteSelec, setClienteSelec] = useState(null);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [mostrarFormularioCliente, setMostrarFormularioCliente] = useState(false);
   
 
   const fetchNombre = () => {
@@ -52,7 +53,7 @@ function  ListaClientes() {
   const borrar = async (clienteId) =>{
     try{
       await fetch(`/api/clientes/eliminar/${clienteId}`,{
-        method: 'DELETE',
+        method: 'PUT',
         credentials: 'include'
       })
       setClientes(prevClientes => prevClientes.filter(cliente => cliente.id !== clienteId));
@@ -65,7 +66,7 @@ function  ListaClientes() {
 
 
 
-  const boleta = async (nombre, nombrecliente, descripcion, telefonoC) =>{
+  const boleta = async (nombre, nombrecliente, descripcion, telefonoC, codigoCli) =>{
     fetchTelefono();
     let telusuario = telefono;
     let data = 'COMPROBANTE \n'
@@ -76,7 +77,10 @@ function  ListaClientes() {
               +`\n`
               + `Descripción: ${descripcion} \n`
               +`\n`
-              + `Teléfono cliente: ${telefonoC}`;
+              + `Teléfono cliente: ${telefonoC}`
+              +`\n`
+              +`\n`
+              + `Código: ${codigoCli}`;
 
     const doc = new jsPDF();
 
@@ -133,6 +137,14 @@ function  ListaClientes() {
     setNombre(nombre);
   };
 
+  const verFormCliente = () => {
+    setMostrarFormularioCliente(true);
+  };
+
+  const ocultarFormCliente = () => {
+    setMostrarFormularioCliente(false);
+  };
+
 
 
   if (!nombre) {
@@ -157,30 +169,31 @@ function  ListaClientes() {
               <span>Descripción</span>
               <span>Teléfono</span>
               <span>Estado</span>
-              <span>Boleta</span>
-              <span>Editar</span>
-              <span>Eliminar</span>
             </li>
           {clientes.map(cliente => (
-            
             <li  key={cliente.id} className="listacliente">
               <span>{cliente.nombre}</span>
               <span className="descripcioncliente">{cliente.descripcion}</span>
               <span>{cliente.telefono}</span>
               <span>{cliente.estado}</span>
-              <button className="btnboleta" onClick={() => boleta(nombre, cliente.nombre, cliente.descripcion, cliente.telefono)}>Boleta</button>
-              <button className="btn3" onClick={() => setClienteSelec(cliente)}>Editar</button>
-              <button className="btn3" onClick={() => borrar(cliente.id, setClientes)}>Eliminar</button>
+              <li className="listabotones">
+                <button className="btnboleta" onClick={() => boleta(nombre, cliente.nombre, cliente.descripcion, cliente.telefono, cliente.codigo)}>Boleta</button>
+                <button className="btn3" onClick={() => {setClienteSelec(cliente); verFormCliente();}}>Editar</button>
+                <button className="btn3" onClick={() => borrar(cliente.id, setClientes)}>Eliminar</button>
+              </li>
+              
             </li>
           ))}
 
         </ul>
-        {clienteSelec && 
+        {clienteSelec && mostrarFormularioCliente &&
                 <EditarCliente 
-                    id={clienteSelec.id} 
-                    nombree={clienteSelec.nombre} 
-                    descripcionn={clienteSelec.descripcion} 
-                    cel={clienteSelec.telefono}
+                  ocultarFormCliente={ocultarFormCliente} 
+                  fetchClientes={fetchClientes}
+                  id={clienteSelec.id} 
+                  nombree={clienteSelec.nombre} 
+                  descripcionn={clienteSelec.descripcion} 
+                  cel={clienteSelec.telefono}
                 />
             }
       </div>

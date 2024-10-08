@@ -1,6 +1,9 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import conectarBD from './conexion.js';
 import { Router } from 'express';
+import { nanoid } from 'nanoid';
+
+
 
 const router = Router();
 let Cliente;
@@ -42,6 +45,16 @@ let Cliente;
         validate: {
             isIn: [["Pendiente", "En Proceso", "Finalizado"]]
         }
+    },
+    listo: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
+    codigo:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        notEmpty: true
     }
     }, {
         tableName: 'clientes',
@@ -54,6 +67,7 @@ router.post('/crear-cliente', async (req,res)=>{
     const usuarioId = req.session.usuarioId;
     const{nombre, descripcion, telefono} = req.body;
     const estadoC = "Pendiente";
+    const codigoUnico = nanoid(10);
 
     if (!usuarioId) {
         return res.status(401).json({ message: 'Usuario no autenticado' });
@@ -66,7 +80,8 @@ router.post('/crear-cliente', async (req,res)=>{
             nombre: nombre,
             descripcion: descripcion,
             telefono: telefono,
-            estado: estadoC
+            estado: estadoC,
+            codigo: codigoUnico
         },
         );
         res.status(201).json({ message: 'Cliente creado exitosamente', cliente });
@@ -100,7 +115,6 @@ router.put('/editar/:id', async (req,res) => {
 });
 
 router.get('/lista', async (req, res) => {
-    console.log('Sesión del usuario:', req.session);
     if (!req.session || !req.session.usuarioId) {
         return res.status(401).json({ error: 'Usuario no autenticado' });
     }
@@ -108,7 +122,8 @@ router.get('/lista', async (req, res) => {
     try {
         const listaClientes = await Cliente.findAll({
             where: {
-                usuario_id: req.session.usuarioId
+                usuario_id: req.session.usuarioId,
+                listo: false
             }
         });
         console.log('Lista de clientes:', listaClientes);
@@ -121,12 +136,33 @@ router.get('/lista', async (req, res) => {
 
 
 
-router.delete('/eliminar/:id', async(req,res) => {
+router.get('/cliente/:codigo', async (req, res) => {
+    const {codigo} = req.params;
+
+    try {
+        const cliente = await Cliente.findOne({
+            where: {
+                codigo: codigo
+            }
+        });
+        console.log('Cliente:', cliente);
+        res.status(200).json({ message: 'Cliente encontrado', cliente });
+    } catch (error) {
+        console.error('Error al obtener cliente:', error);
+        res.status(500).json({ message: 'Error al encontrar cliente' });
+    }
+});
+
+
+
+router.put('/eliminar/:id', async(req,res) => {
     const {id} = req.params;
 
     try{
-        await Cliente.destroy({
-            where:{id: id},
+        await Cliente.update({
+            listo: true
+        },
+        {where:{id: id},
         });
         res.status(200).json({ message: 'Cliente borrado exitosamente' });
     } catch(error){

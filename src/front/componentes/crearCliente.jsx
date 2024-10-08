@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './formCliente.css';
+import {X} from "phosphor-react";
+
 
 function FormCliente ({agregarCliente, ocultarForm}) {
   
@@ -49,7 +51,7 @@ function FormCliente ({agregarCliente, ocultarForm}) {
 
   return (
     <div id='formC'>
-      <h1>Nuevo Cliente</h1>
+      <h1>Nuevo Cliente  <X onClick={()=> ocultarForm() } size={20} /></h1>
       <form onSubmit={manejarEnvio}>
         <div className='inputbox'>
           <label>Nombre:</label>

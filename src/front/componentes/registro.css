@@ -1,46 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
 
 .center2 {
-  display:block;
-  position:relative;
-  width: 21rem;
-  max-height: 50%;
-  padding: 1rem;
+  display: flex;
   flex-direction: column;
+  width: 21rem;
+  padding: 1.5rem;
   background: #fff;
   border-radius: 10px;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  align-content: center;
-  overflow:auto;
+  align-items: center; 
+  box-sizing: border-box;
 }
+
 .center2 h1 {
   font-size: 1.4em;
   border-left: 5px solid dodgerblue;
-  padding: 10px;
+  padding-left: 15px;
+  margin-bottom: 30px; 
   color: #000;
-  letter-spacing: 5px;
-  margin-bottom: 60px;
+  letter-spacing: 3px;
   font-weight: bold;
-  padding-left: 10px;
 }
+
 .center2 .inputbox {
-  position: relative;
-  width: 15rem;
-  height: 2rem;
-  margin-bottom: 50px;
+  margin-bottom: 30px; 
+  width: 100%; 
 }
+
 .center2 .inputbox input {
-  position: relative;
-  top: 0;
-  left: 30px;
-  width: 100%;
-  border: 2px solid #000;
-  background: none;
+  width: 100%; 
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
+
+#btn11 {
+  width: 90%;
+  margin-top: 20px;
+  padding: 10px;
+  background: #5b88a5;
+  color: #fff;
+  border:2px solid #000000;
+  border-radius: 30px;
+}
+
 
 .center2 .inputbox span {
   display: flex;
@@ -51,13 +52,6 @@
   font-family: sans-serif;
 }
 
-#btn11{
-  width: 80%;
-  background: #5b88a5;
-  color: #fff;
-  border:2px solid #000000;
-  border-radius: 30px;
-}
 
 #btn11:hover {
   background: #243a69;
@@ -69,29 +63,24 @@
   transition: all .3s;
 }
 
-@media screen and (max-width : 700px) {
+@media screen and (max-width: 700px) {
   .center2 {
-    width: 15rem;
-    height: auto;
-    overflow: auto;
-}
-.center2 h1 {
-  font-size: 1rem;
-}
-.center2 .inputbox {
-  width: 12rem;
-  height: 1.5rem;
-}
-.center2 .inputbox input {
-  width: 80%;
-}
+      width: 85%;
+  }
 
-.center2 .inputbox span {
-  font-size: 0.75em;
-}
+  .center2 h1 {
+      font-size: 1.2em; 
+  }
 
-#btn11{
-  width: 70%;
-}
+  .center2 .inputbox {
+      width: 100%; 
+  }
 
+  .center2 .inputbox input {
+      width: 90%; 
+  }
+
+  #btn11 {
+      width: 85%; 
+  }
 }

@@ -141,6 +141,7 @@
         width: 100%;
         height: 100vh;
         color: #f4f4f2;
+        animation: blurnav .5s ease-in;
     }
 
     .linkss.visible{
@@ -157,5 +158,11 @@
 
     .btnabrir.visible{
         display: flex;
+    }
+
+    @keyframes blurnav{
+        from{
+            opacity: 0;
+        } 
     }
 }
