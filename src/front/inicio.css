@@ -1,34 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nabla&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:wght@700&family=Roboto:ital,wght@0,300;1,100;1,300&display=swap');
 
 #pageinicio {
-    display: grid;
+    display: flex;
     position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(rgba(90, 90, 90, 0.75), rgba(255, 255, 255, 0.75)), url(../front/img/fondoservice.png) no-repeat center center;
-    grid-template-rows:  0fr 0.8fr;
-    width: 100%;
-    height: calc(100% - 60px);
-    margin-top: 60px;
+    min-height: 100vh;
+    min-width: 100vw;
     overflow: auto;
     top: 0;
     left: 0;
 }
 
 .t1 {
-    grid-row: 1;
-    font-size: 3.5rem;
-    font-family: "Roboto Mono", monospace;
-    align-self: start; 
-    justify-self: center; 
-    font-weight: bold;
-    color: #fff; 
-    animation:blur .5s ease-out ;
-    text-shadow: 0 1px 0 #ddd, 0 2px 0 #ccc, 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 0 #acacac, 0 6px 1px rgba(0,0,0,0.1), 0 0 5px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.3), 0 3px 5px rgba(0,0,0,0.2), 0 5px 10px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.2), 0 20px 20px rgba(0,0,0,0.15);
+    display: flex;
+    position: relative;
+    justify-self: center;
+    text-transform: uppercase;
+    font-size: calc(5rem);
+    font-weight: 990;
+    letter-spacing: .175ch;
+    color: white;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 4px 4px black;
 }
 
 .divsegundo{
     display: flex;
     position: relative;
-    grid-row: 2;
     justify-content: center;
     align-content: center;
     flex-direction: column;
@@ -38,26 +39,29 @@
     align-self: center;
     align-items: center;
     justify-items: center;
-    gap: 2rem;
     animation:blur2 .5s ease-out ;
 } 
 
 .t2 {
-    font-size: 1.8rem;
-    font-family: "Roboto Mono", monospace;
-    color: #000;
-    text-shadow: 0 1px 0 #ddd, 0 2px 0 #ffffff, 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 0 #acacac, 0 6px 1px rgba(255, 255, 255, 0.1), 0 0 5px rgba(255, 255, 255, 0.1), 0 1px 3px rgba(255, 255, 255, 0.3), 0 3px 5px rgba(255, 255, 255, 0.2), 0 5px 10px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(255, 255, 255, 0.2), 0 20px 20px rgba(255, 255, 255, 0.15);
-    text-align: center; 
+    text-transform: uppercase;
+    font-size: calc(2.3rem);
+    font-weight: 990;
+    letter-spacing: -.175ch;
+    color: lightgreen;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 4px 4px black;
 }
 
 .divsegundo p {
-    font-size: 1.4rem;
-    font-family: "Roboto Mono", monospace;
-    text-align: center; 
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
-    padding: 10px;
-    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: calc(1.5rem);
+    font-weight: 990;
+    letter-spacing: -.175ch;
     color: white;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 4px 4px black;
 }
 
 .elementos{
@@ -65,13 +69,17 @@
     list-style: none;
     justify-content: space-between;
     gap: 2rem;
-    filter: drop-shadow(1px 2px 2px #fff);
 }
 
 #btnto {
     display: block;
-    background-color: #ffb71d;
-    font-size: 2rem;
+    background-color: lightgreen;
+    text-transform: uppercase;
+    font-size: calc(2.5rem);
+    font-weight: 990;
+    color: white;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 4px 4px black;
     border-radius: 30px;
     box-shadow: 2px 6px 10px rgb(0, 0, 0);
     padding: 10px;
