@@ -10,9 +10,8 @@
   align-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
-  height: calc(100vh - 60px);
-  margin-top: 60px;
+  min-width: 100vw;
+  min-height: 100vh;
   overflow:auto;
   top: 0;
   font-family: "Roboto Mono", monospace;
@@ -22,8 +21,8 @@
 }
 
 #formCP {
-    display:block;
-    position: absolute;
+    display:flex;
+    position: fixed;
     width: 21rem;
     height: auto;
     padding: 1rem;
@@ -31,12 +30,12 @@
     background: #fff;
     border-radius: 10px;
     justify-content: center;
-    justify-items: end;
-    align-items: flex-start;
+    justify-items: center;
+    align-items: center;
     align-content: flex-start;
     overflow:auto;
     z-index: 1;
-    box-shadow: 1px 1px 100vh #00000094 ;
+    box-shadow: 2px 2px 2px #00000094 ;
 }
 #formCP h1 {
   font-size: 1.4rem;
@@ -58,7 +57,7 @@
   position: relative;
   justify-content: center;
   justify-items: center;
-  left: 30px;
+  left: 0;
   top: 0;
   width: 100%;
   border: 2px solid #000;
@@ -70,18 +69,21 @@
 #formCP .inputbox label {
   display: flex;
   position: relative;
-  left: 30px;
+  left: 0;
   top: 0;
-  font-size: 0.9em;
+  font-size: 1.5em;
   font-family: sans-serif;
 }
 
 #btnC{
-  width: 80%;
+  display: flex;
+  position: relative;
+  width: 100%;
   background: #5b88a5;
   color: #fff;
   border:2px solid #000000;
   border-radius: 30px;
+  justify-content: center;
 }
 
 #btnC:hover {

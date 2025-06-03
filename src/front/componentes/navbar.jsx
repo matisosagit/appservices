@@ -3,7 +3,7 @@ import './navbar.css';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {Users} from "phosphor-react";
-import logo from '../img/logosinfondo.png';
+import svg from '../service4.svg';
 import {List} from "phosphor-react";
 import {X} from "phosphor-react";
 import {IdentificationBadge} from "phosphor-react";
@@ -32,7 +32,7 @@ export  const Navbar = () => {
 
 
     return <div className={`navbar ${barraVisible ? "visible" : ""}`}>
-        <Link to="/"   className="nosub"><img className="logo" src={logo} alt="Logo" /></Link>
+        <Link to="/"   className="nosub"><img className="logo" src={svg} alt="Logo" /></Link>
         <button className={`btnabrir ${boton ? "visible" : ""}`} onClick={() => {abrirBarra(); ocultarboton()}}><List size={32} color="#f1efef" /></button>
         <div className={`linkss ${barraVisible ? "visible" : ""}`}>
             <button className={`btncerrar ${barraVisible ? "visible" : ""}`} onClick={() => {cerrarBarra(); mostrarboton()}}><X size={32} color="#f1efef" /></button>
