@@ -28,7 +28,8 @@
     "start": "node src/back/index.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "cd src/front && npm install && npm run build && cp -r build ../back/",
+    "build:front": "react-scripts build",
+    "build": "npm install && npm run build:front && mv build src/back/ && mv src/back/build src/back/public",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
