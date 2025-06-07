@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(sesion);  
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
 
