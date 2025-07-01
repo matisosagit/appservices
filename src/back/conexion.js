@@ -1,10 +1,16 @@
 import { Sequelize } from 'sequelize';
 
 export default async function conectarBD() {
-    const sequelize = new Sequelize('database', 'root', 'root', {
-        host: 'localhost',
+    const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
         dialect: 'mysql'
-    });
+    }
+    );
 
     try {
         await sequelize.authenticate();
@@ -15,3 +21,5 @@ export default async function conectarBD() {
     
     return sequelize;
 }
+
+
