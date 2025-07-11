@@ -1,7 +1,14 @@
 import { Sequelize } from 'sequelize';
+import {configDotenv} from 'dotenv';
+configDotenv();
+
 
 export default async function conectarBD() {
-    const sequelize = new Sequelize('database', 'root', 'mat1sql', {
+    const db = process.env.DB_NAME;
+    const user = process.env.DB_USER;
+    const pass = process.env.DB_PASS;
+    
+    const sequelize = new Sequelize(`${db}`, `${user}`, `${pass}`, {
         host: 'localhost',
         dialect: 'mysql'
     });
