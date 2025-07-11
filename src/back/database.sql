@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS 'database';
+CREATE SCHEMA IF NOT EXISTS dbappservice;
 
 CREATE TABLE usuarios (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -18,5 +18,13 @@ CREATE TABLE clientes (
     estado VARCHAR(20),
     listo BOOLEAN,
     codigo VARCHAR(100) NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+
+CREATE TABLE repuestos(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT,
+    nombre VARCHAR(100) NOT NULL,
+    cantidad INT,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
