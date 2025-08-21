@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nabla&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:wght@700&family=Roboto:ital,wght@0,300;1,100;1,300&display=swap');
+
+.paneladmin{
+    display: flex;
+    position: absolute;
+    background: linear-gradient(rgba(90, 90, 90, 0.75), rgba(255, 255, 255, 0.75)), url(./img/fondoservice.png) no-repeat center center ;
+    background-size: cover;
+    justify-content:stretch;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    min-height: calc(100vh - 60px);
+    margin-top: 60px;
+    overflow:auto;
+    top: 0;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.ulcli {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-between;
+    justify-items: space-between;
+    flex-direction: column;
+    align-items: center;
+    align-content:center ;
+    width: 90%;
+}
+
+.listacliente span{
+    display:block;
+    position: relative;
+    padding: 0.2rem;
+}
+
+.paneladmin h1{
+    display: flex;
+    position: relative;
+    font-size: 3rem;
+    align-items: flex-start;
+    align-content: flex-start;
+    text-shadow: 3px 3px 3px #5b88a5;
+}
+
+.tituloadmin{
+    font-size: 2rem;
+    text-shadow: 3px 3px 3px #5b88a5;
+}
+
+.listacliente{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    list-style: none;
+    margin: 1rem 0rem 0rem -2rem;
+    max-height: 4rem;
+    min-height: fit-content;
+    justify-content: space-between;
+    text-align: left;
+    justify-items:center;
+    justify-self: center;
+    align-self: center;
+    align-items:center;
+    align-content: center;
+    background-color: #5b88a5;
+    background-size: cover;
+    padding: 0.5rem;
+    border-radius: 20px;
+    flex-wrap: nowrap;
+    min-width: 90vw;
+    flex-grow: 1;
+    font-size: clamp(.7rem, 0.3vw + 0.3rem, 3rem);
+    
+}
+
+.inputbuscador {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    width: 15rem;
+    height: 2rem;
+    margin: 50px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    background-color: rgba(144, 238, 144, 0.438);
+}
+
+
+.listabotones{
+    display:flex;
+    position: relative;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-evenly;
+    justify-items:center;
+    align-items:center;
+    align-content: center;
+    flex-wrap: wrap;
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+
+
+.btn2{
+
+    background: #5b88a5;
+    color: #fff;
+    border:2px solid #000000;
+    border-radius: 30px;
+    transition: all .3s ease-in-out;
+    }
+
+.btn2:hover {
+    background: linear-gradient(45deg, rgb(47, 137, 255), rgb(30, 255, 169));
+    transition: all .3s ease-in-out;
+}
+
+.btn3{
+    display: flex;
+
+    background: #dd322c;
+    color: #fff;
+    border:2px solid #000000;
+    border-radius: 30px;
+    transition: all .3s ease-in-out;
+    align-items: flex-end;
+    justify-content: flex-end;
+    }
+
+.btn3:hover {
+    background: linear-gradient(45deg, rgb(47, 137, 255), rgb(30, 255, 169));
+    transition: all .3s ease-in-out;
+}
+
+.btnboleta{
+    display: flex;
+    background: #61d315;
+    color: #fff;
+    border:2px solid #000000;
+    border-radius: 30px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    }
+
+.btnboleta:hover {
+    background: linear-gradient(45deg, rgb(47, 137, 255), rgb(30, 255, 169));
+    transition: all .3s ;
+}
+
+
+.descripcioncliente {
+    display: block;
+    position: absolute;
+    min-width: 100%;
+    min-height: fit-content;
+    overflow-wrap: break-word; 
+    word-break:break-word; 
+    overflow-y: hidden;
+}
+
+
+
+#iddiv1 {
+    display: flex;
+    background: linear-gradient(rgba(90, 90, 90, 0.75), rgba(255, 255, 255, 0.75)), url(./img/fondoservice.png) no-repeat center center;
+    background-size: cover;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: auto;
+    height: 100vh;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    gap: 2rem; 
+    padding: 2rem;
+    overflow-x: hidden; 
+}
+
+

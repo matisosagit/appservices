@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
+
+#formC {
+    display:flex;
+    position: absolute;
+    width: 21rem;
+    height: 50% auto;
+    padding: 1rem;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 10px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    overflow:auto;
+    z-index: 1;
+    box-shadow: 1px 1px 100vh #00000094 ;
+}
+#formC h1 {
+  font-size: 1.4rem;
+  border-left: 5px solid dodgerblue;
+  padding: 10px;
+  color: #000;
+  letter-spacing: 5px;
+  margin-bottom: 60px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+#formC .inputbox {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  width: 15rem;
+  height: 2rem;
+  margin-bottom: 50px;
+}
+#formC .inputbox input {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  justify-items: center;
+  top: 0;
+  width: 100%;
+  border: 2px solid #000;
+  background: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#formC .inputbox label {
+  display: flex;
+  position: relative;
+  top: 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+}
+
+#btnN{
+  width: 80%;
+  background: #5b88a5;
+  color: #fff;
+  border:2px solid #000000;
+  border-radius: 30px;
+}
+
+#btnN:hover {
+  background: #243a69;
+  transition: all .3s;
+}
+
+#btnN:not(:hover){
+  background: #5b88a5;
+  transition: all .3s;
+}
+
+@media screen and (max-width : 700px) {
+  #formC {
+    width: 15rem;
+    height: auto;
+}
+#formC h1 {
+  font-size: 1rem;
+}
+#formC .inputbox {
+  width: 12rem;
+  height: 1.5rem;
+}
+#formC .inputbox input {
+  width: 80%;
+}
+
+#formC .inputbox label {
+  font-size: 0.75em;
+}
+
+#btnN{
+  width: 70%;
+}
+
+}

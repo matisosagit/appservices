@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@600&display=swap");
+
+.center {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 21rem;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 10px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.center h1 {
+  font-size: 1.4em;
+  border-left: 5px solid dodgerblue;
+  padding-left: 15px;
+  margin-bottom: 30px; 
+  color: #000;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.center .inputbox {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.center .inputbox input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#btn10 {
+  width: 90%;
+  margin-top: 20px;
+  padding: 10px;
+  background: #5b88a5;
+  color: #fff;
+  border:2px solid #000000;
+  border-radius: 30px;
+  margin: 15px;
+}
+
+
+.center .inputbox span {
+  display: flex;
+  position: relative;
+  left: 30px;
+  top: 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+}
+
+
+#btn10:hover {
+  background: #243a69;
+  transition: all .3s;
+}
+
+#btn10:not(:hover){
+  background: #5b88a5;
+  transition: all .3s;
+}
+
+@media screen and (max-width: 700px) {
+  .center {
+      width: 85%;
+  }
+
+  .center h1 {
+      font-size: 1.2em;
+  }
+
+  .center .inputbox {
+      width: 100%;
+  }
+
+  .center .inputbox input {
+      width: 90%;
+  }
+
+  #btn10 {
+      width: 85%;
+  }
+}

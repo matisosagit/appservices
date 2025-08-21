@@ -1,0 +1,76 @@
+$bg: #F9F9F9;
+$card: #fff;
+
+@import url('https://fonts.googleapis.com/css?family=Arbutus+Slab|Open+Sans&display=swap');
+
+
+
+.container h2{
+  font-family: 'Arbutus Slab', serif;
+  font-weight: normal;
+  font-size: 1rem;
+  color: #000;
+  line-height: 1.25;
+}
+
+.container p{
+  position: absolute;
+  font-family: 'Arbutus Slab', serif;
+  bottom: 0;
+  font-size: 14px;
+}
+
+.container {
+  display: flex;
+  min-width: 100%;
+  height: fit-content;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  gap: 48px;
+  
+  flex-wrap: wrap;
+}
+
+.container .card {
+  cursor: pointer;
+  position: relative;
+  width: 200px;
+  height: 150px;
+  padding: 0% 0% 50px 0%;
+  overflow:visible;
+  --offset-multiplier: 4px;
+  transition: transform 0.6s ease;
+  --translate: 0;
+  transform: translate(var(--translate), var(--translate));
+
+  &:hover {
+    --offset-multiplier: 6px;
+    --translate: calc(-1px * (var(--cards) - 1));
+    transition: transform 0.3s ease;
+  }
+}
+
+.container .child {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+    align-content: center;
+  background: $card;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  transition: inherit;
+  --translate: calc(var(--offset) * var(--offset-multiplier));
+  transform: translate(var(--translate), var(--translate));
+  z-index: 5;
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      --offset: #{-1 + $i};
+      z-index: #{5 - $i};
+    }
+  }
+}
+

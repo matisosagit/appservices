@@ -1,0 +1,50 @@
+.App {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 90vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: linear-gradient(rgba(90, 90, 90, 0.75), rgba(255, 255, 255, 0.75)), url(./img/fondoservice.png) no-repeat center center fixed;
+  background-size:cover;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
