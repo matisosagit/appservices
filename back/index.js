@@ -1,6 +1,5 @@
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
+import cors from "cors";
 
 import conectarBD from "./conexion.js";
 import sesion from "./sesion.js";
@@ -10,6 +9,11 @@ import router from "./clientes.js";
 const app = express();
 app.set("trust proxy", 1);
 
+
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
