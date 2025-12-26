@@ -1,27 +1,26 @@
-import { Sequelize } from 'sequelize';
-import { config } from 'dotenv';
+import { Sequelize } from "sequelize";
+import { config } from "dotenv";
 
-config(); 
+config();
 
 export default async function conectarBD() {
-  const db = process.env.DB_NAME;
-  const user = process.env.DB_USER;
-  const pass = process.env.DB_PASS;
-  const host = process.env.DB_HOST || 'localhost';
-  const port = process.env.DB_PORT || 3306; 
-
-  const sequelize = new Sequelize(db, user, pass, {
-    host,
-    port,
-    dialect: 'mysql',
-    logging: false
+  const sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: "postgres",
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
   });
 
   try {
     await sequelize.authenticate();
-    console.log('Conexión exitosa a la base de datos');
+    console.log("Conexión exitosa a PostgreSQL");
   } catch (error) {
-    console.error('Error al conectar a la base de datos:', error);
+    console.error("Error al conectar a la base de datos:", error);
+    throw error;
   }
 
   return sequelize;
