@@ -5,10 +5,10 @@ const sesion = session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,         // HTTPS obligatorio
+    secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
-    sameSite: "none",     // cross-domain
-    maxAge: 24 * 60 * 60 * 1000 // 1 día
+    sameSite: process.env.NODE_ENV === 'production' ? "none" : "lax",
+    maxAge: 24 * 60 * 60 * 1000
   }
 });
 
