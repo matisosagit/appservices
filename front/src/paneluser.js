@@ -33,7 +33,7 @@ function  ListaClientes() {
 
   const fetchNombre = async () => {
     try{
-    const res = await fetch('/api/usuarios/nombre',{
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/nombre`,{
       method: 'GET',
       credentials: 'include'
     });

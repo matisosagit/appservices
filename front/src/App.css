@@ -11,7 +11,7 @@
   align-content: center;
   overflow-x: hidden;
   overflow-y: auto;
-  background: linear-gradient(rgba(90, 90, 90, 0.75), rgba(255, 255, 255, 0.75)), url(./img/fondoservice.png) no-repeat center center fixed;
+  background: linear-gradient(rgba(32, 32, 32, 0.75), rgba(59, 59, 59, 0.75)), url(./img/fondoservice.png) no-repeat center center fixed;
   background-size:cover;
 }
 

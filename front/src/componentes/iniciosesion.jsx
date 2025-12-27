@@ -17,7 +17,7 @@ function FormularioInicio () {
         };
 
         try{
-            const respuesta = await fetch('/api/usuarios/iniciar-sesion', {
+            const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/iniciar-sesion`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

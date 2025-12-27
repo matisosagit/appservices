@@ -20,7 +20,7 @@ function EditarCliente ({ocultarFormCliente, fetchClientes,id, nombree, descripc
     };
 
     try {
-      const respuesta = await fetch(`/api/clientes/editar/${id}`, {
+      const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/api/clientes/editar/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

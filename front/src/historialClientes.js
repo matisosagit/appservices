@@ -17,7 +17,7 @@ function  ClientesXml() {
 
 
     const fetchClientesXML = () => {
-        fetch('/api/clientes/lista-completa',{
+        fetch(`${process.env.REACT_APP_API_URL}/api/clientes/lista-completa`,{
         method: 'GET',
         credentials: 'include'
         })
@@ -46,7 +46,7 @@ function  ClientesXml() {
 
     const fetchNombre = async () => {
         try{
-        const res = await fetch('/api/usuarios/nombre',{
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/nombre`,{
         method: 'GET',
         credentials: 'include'
         });
@@ -66,7 +66,7 @@ function  ClientesXml() {
     };
 
     const fetchTelefono = () => {
-        fetch('/api/usuarios/telefono',{
+        fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/telefono`,{
             method: 'GET',
             credentials: 'include'
         })

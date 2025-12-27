@@ -1,6 +1,6 @@
 import './App.css';
 import ListaClientes from "./paneluser.js";
-import { Navbar } from './componentes/navbar.jsx';
+import  Navbar  from './componentes/navbar.jsx';
 import Inicio from './inicio.js';
 import InfoCliente from './PanelCliente.js';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -14,7 +14,7 @@ function App() {
       <br></br>
       <br></br>
       <br></br>
-      <Router>
+      <Router basename="/appservicefront">
         <Navbar/>
         <Routes>
           <Route path='/' element={<Inicio/>}/>

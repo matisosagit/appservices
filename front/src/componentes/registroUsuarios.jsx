@@ -21,7 +21,7 @@ function FormularioUsuario  () {
     };
 
     try {
-      const respuesta = await fetch('/api/usuarios/crear-usuario', {
+      const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/crear-usuario`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

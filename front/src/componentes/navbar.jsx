@@ -10,7 +10,7 @@ import {IdentificationBadge} from "phosphor-react";
 
 
 
-export  const Navbar = () => {
+const Navbar = () => {
     const[barraVisible, setBarraVisible] = useState(false);
     const[boton, setBoton] = useState(true);
 
@@ -42,3 +42,5 @@ export  const Navbar = () => {
         </div>
     </div>
 }
+
+export default Navbar;

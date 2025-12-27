@@ -19,7 +19,7 @@ function FormCliente ({agregarCliente, ocultarForm}) {
     };
 
     try {
-      const respuesta = await fetch('/api/clientes/crear-cliente', {
+      const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/api/clientes/crear-cliente`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
