@@ -1,17 +1,17 @@
-import session from "express-session";
+import session from 'express-session';
 
-app.set("trust proxy", 1); // necesario en Render
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
+const sesion = session({
+  secret: process.env.SESSION_SECRET || 'tu_secreto_aqui',
   resave: false,
   saveUninitialized: false,
   cookie: {
     secure: true,         // HTTPS obligatorio
     httpOnly: true,
-    sameSite: "none",     // clave: cross-domain
+    sameSite: "none",     // cross-domain
     maxAge: 24 * 60 * 60 * 1000 // 1 día
   }
-}));
+});
+
+export default sesion;
 
 
