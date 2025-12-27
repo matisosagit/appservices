@@ -5,10 +5,14 @@ import sesion from "./sesion.js";
 import rutasUsuario from "./usuarios.js";
 import router from "./clientes.js";
 
+import cors from "cors";
+
 const app = express();
 app.set("trust proxy", 1);
-
-
+app.use(cors({
+  origin: process.env.FRONT_URL,  
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
