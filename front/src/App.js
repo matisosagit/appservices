@@ -14,7 +14,7 @@ function App() {
       <br></br>
       <br></br>
       <br></br>
-      <Router basename="/appservicefront">
+      <Router>
         <Navbar/>
         <Routes>
           <Route path='/' element={<Inicio/>}/>

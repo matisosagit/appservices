@@ -53,7 +53,7 @@ function  ListaClientes() {
   };
 
   const fetchTelefono = () => {
-    fetch('/api/usuarios/telefono',{
+    fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/telefono`,{
       method: 'GET',
       credentials: 'include'
     })
@@ -71,7 +71,7 @@ function  ListaClientes() {
 
   const borrar = async (clienteId) =>{
     try{
-      await fetch(`/api/clientes/eliminar/${clienteId}`,{
+      await fetch(`${process.env.REACT_APP_API_URL}/api/clientes/eliminar/${clienteId}`,{
         method: 'PUT',
         credentials: 'include'
       })
@@ -121,7 +121,7 @@ function  ListaClientes() {
 
 
   const fetchClientes = () => {
-    fetch('/api/clientes/lista',{
+    fetch(`${process.env.REACT_APP_API_URL}/api/clientes/lista`,{
       method: 'GET',
       credentials: 'include'
     })
