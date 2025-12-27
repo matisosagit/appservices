@@ -12,6 +12,7 @@
         "express-session": "^1.18.1",
         "mysql2": "^3.14.1",
         "nanoid": "^5.1.5",
+        "pg": "^8.16.3",
         "sequelize": "^6.37.7"
     },
     "scripts": {
