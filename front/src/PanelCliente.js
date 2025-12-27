@@ -8,7 +8,7 @@ function InfoCliente() {
 
     const fetchCliente = async (codigo) =>{
         try{
-            const respuesta = await fetch(`/api/clientes/cliente/${codigo}`,{
+            const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/api/clientes/cliente/${codigo}`,{
                 method: 'GET',
                 credentials: 'include'
             });
