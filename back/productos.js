@@ -29,6 +29,7 @@ let Repuesto;
     },{
         tableName: 'repuestos'
     });
+    await sequelize.sync({ force: false });
 })();
 
 router.post('anadir-repuesto', async (req, res) => {

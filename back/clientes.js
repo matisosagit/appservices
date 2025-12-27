@@ -65,6 +65,7 @@ let Cliente;
         tableName: 'clientes',
         timestamps: false
     });
+    await sequelize.sync({ force: false });
 })();
 
 
