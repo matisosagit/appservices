@@ -53,6 +53,7 @@ const hashPassword = async (password) => {
         tableName: 'usuarios',
         timestamps: false
     });
+    await sequelize.sync({ force: false });
 })();
 
 
