@@ -3,7 +3,8 @@ import { DataTypes } from 'sequelize';
 import conectarBD from './conexion.js';
 import { Router } from 'express';
 import sesion from './sesion.js';
-import bcrypt from 'bcrypt';
+import bcrypt from "bcryptjs";
+
 const router = Router();
 let Usuario;
 

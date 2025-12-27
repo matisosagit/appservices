@@ -1,7 +1,10 @@
 {
+    "name": "mi-app",
+    "version": "1.0.0",
+    "main": "index.js",
     "type": "module",
     "dependencies": {
-        "bcrypt": "^5.1.1",
+        "bcryptjs": "^3.0.3",
         "connect-redis": "^7.1.1",
         "cors": "^2.8.5",
         "dotenv": "^17.2.0",
@@ -12,7 +15,7 @@
         "sequelize": "^6.37.7"
     },
     "scripts": {
-        "start": "node src/index.js",
-        "dev": "nodemon src/index.js"
+        "start": "node index.js",
+        "dev": "nodemon index.js"
     }
 }
