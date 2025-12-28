@@ -40,6 +40,7 @@ function  ListaClientes() {
         if (res.ok) {
           const data = await res.json();
           setNombre(data.nombre || "");
+          console.log("fetch nombre exitoso");
         }else{
           setNombre("");
         }
