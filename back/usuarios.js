@@ -89,19 +89,29 @@ router.post('/iniciar-sesion', async (req,res)=>{
         }});
     if(usuarioFind){
         const esCorrecta = await bcrypt.compare(contraseña, usuarioFind.contraseña);
-        if(esCorrecta){
+        if (esCorrecta) {
             req.session.usuarioId = usuarioFind.id;
-            req.session.save();
-            res.status(201).json({ message: 'Sesión iniciada exitosamente', usuarioFind });
-            console.log("inicio de sesion exitoso");
-        }else{
-            return res.status(401).json({message: 'Contraseña incorretca.'});
-        }
+    
+            req.session.save((err) => {
+            if (err) {
+                console.error("Error al guardar la sesión:", err);
+                return res.status(500).json({ message: 'Error al procesar la sesión' });
+            }
+
+            console.log("Sesión guardada y confirmada");
+            return res.status(200).json({ 
+                message: 'Sesión iniciada exitosamente', 
+                usuarioFind 
+            });
+    });
+
+} else {
+    return res.status(401).json({ message: 'Contraseña incorrecta.' });
+}
     }else{
         return res.status(404).json({message: 'Error al iniciar sesión, usuario no encontrado'});
     }
-    console.log({"sesion": req.session});
-    console.log({"userid": req.session.usuarioId});
+
 });
 
 router.get('/nombre', async (req, res) => {
