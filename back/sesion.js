@@ -9,6 +9,7 @@ const sesion = session({
     httpOnly: true,
     secure: true,
     sameSite: "lax",
+    domain: ".tuserviceonline.uy",
     maxAge: 24 * 60 * 60 * 1000
   }
 
