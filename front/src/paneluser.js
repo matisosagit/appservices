@@ -42,12 +42,12 @@ function  ListaClientes() {
           setNombre(data.nombre || "");
           console.log("fetch nombre exitoso");
         }else{
-          setNombre("");
+          setNombre(null);
         }
     }
       catch(error) {
         console.log('Error al obtener el nombre del usuario:', error);
-        setNombre("");
+        setNombre(null);
       } finally {
         setCargando(false);
       }
@@ -142,8 +142,8 @@ function  ListaClientes() {
   };
 
   useEffect(() => {
-    fetchClientes();
     fetchNombre();
+    fetchClientes();
     fetchTelefono();
   }, []);
   
@@ -172,10 +172,17 @@ function  ListaClientes() {
   };
 
   useEffect(() => {
-    if (!cargando && !nombre) {
+    if (!cargando && nombre === null) {
       navigate("/Ingreso");
     }
   }, [cargando, nombre, navigate]);
+
+  if(cargando){
+    return(
+      <p>cargando...</p>
+    )
+  }
+
   if (!nombre) {
       return null;
   }
