@@ -92,6 +92,9 @@ router.post('/iniciar-sesion', async (req,res)=>{
         if(esCorrecta){
             req.session.usuarioId = usuarioFind.id;
             res.status(201).json({ message: 'Sesión iniciada exitosamente', usuarioFind });
+            console.log("inicio de sesion exitoso");
+            console.log({"sesion": req.session});
+            console.log({"userid": req.session.usuarioId});
         }else{
             return res.status(401).json({message: 'Contraseña incorretca.'});
         }
