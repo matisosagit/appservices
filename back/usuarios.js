@@ -91,6 +91,7 @@ router.post('/iniciar-sesion', async (req,res)=>{
         const esCorrecta = await bcrypt.compare(contraseña, usuarioFind.contraseña);
         if(esCorrecta){
             req.session.usuarioId = usuarioFind.id;
+            req.session.save();
             res.status(201).json({ message: 'Sesión iniciada exitosamente', usuarioFind });
             console.log("inicio de sesion exitoso");
         }else{
