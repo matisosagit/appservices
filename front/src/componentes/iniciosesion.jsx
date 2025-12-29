@@ -22,7 +22,8 @@ function FormularioInicio () {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(verificarUsuario)
+                body: JSON.stringify(verificarUsuario),
+                credentials: 'include' 
             });
 
             const data = await respuesta.json();
@@ -31,7 +32,9 @@ function FormularioInicio () {
                 setMensaje(data.message);
                 setNombre('');
                 setContraseña('');
-                setRedirigir(true);
+                setTimeout(() => {
+                    setRedirigir(true);
+                }, 300);
             }else{
                 setMensaje(data.message || 'Error al iniciar sesión');
             }
