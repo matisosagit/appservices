@@ -116,6 +116,31 @@ router.post('/iniciar-sesion', async (req,res)=>{
 });
 
 router.get('/nombre', async (req, res) => {
+    console.log("--- DEBUG NOMBRE ---");
+    console.log("Cookies en el header:", req.headers.cookie);
+    console.log("ID de sesión actual:", req.sessionID); // El ID único de la sesión
+    console.log("Datos en la sesión:", req.session);
+
+    if (!req.session || !req.session.usuarioId) {
+        console.log("Resultado: FALLO - No hay usuarioId en sesión");
+        return res.status(401).json({ message: "No autorizado: sesión vacía" });
+    }
+
+    try {
+        const usuario = await Usuario.findByPk(req.session.usuarioId);
+        if (!usuario) {
+            console.log("Resultado: FALLO - ID existe pero no está en la DB");
+            return res.status(401).json({ message: "Usuario no existe" });
+        }
+        console.log("Resultado: ÉXITO - Usuario encontrado:", usuario.nombre);
+        return res.json({ nombre: usuario.nombre });
+    } catch (error) {
+        console.error("Error en DB:", error);
+        return res.status(500).json({ message: "Error de base de datos" });
+    }
+});
+
+/* router.get('/nombre', async (req, res) => {
     try {
         if (req.session && req.session.nombre) {
             return res.json({ nombre: req.session.nombre });
@@ -126,7 +151,7 @@ router.get('/nombre', async (req, res) => {
         console.error('Error al buscar el usuario:', error);
         res.status(500).json({ message: 'Error interno del servidor' });
     }
-});
+}); */
 
 router.get('/telefono', async (req, res) => {
     try {
