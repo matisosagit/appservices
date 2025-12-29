@@ -3,8 +3,8 @@ import session from 'express-session';
 const sesion = session({
   name: "sid",
   secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   proxy: true,
   cookie: {
     httpOnly: true,
