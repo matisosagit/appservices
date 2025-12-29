@@ -91,6 +91,7 @@ router.post('/iniciar-sesion', async (req,res)=>{
         const esCorrecta = await bcrypt.compare(contraseña, usuarioFind.contraseña);
         if (esCorrecta) {
             req.session.usuarioId = usuarioFind.id;
+            req.session.nombre = usuarioFind.nombre;
     
             req.session.save((err) => {
             if (err) {
@@ -116,12 +117,10 @@ router.post('/iniciar-sesion', async (req,res)=>{
 
 router.get('/nombre', async (req, res) => {
     try {
-        const usuario = await Usuario.findByPk(req.session.usuarioId);
-        
-        if (usuario) {
-            res.json({ nombre: usuario.nombre });
+        if (req.session && req.session.nombre) {
+            return res.json({ nombre: req.session.nombre });
         } else {
-            res.status(401).json({ message: 'No hay sesión iniciada' });
+            return res.status(401).json({ message: 'No hay sesión iniciada' });
         }
     } catch (error) {
         console.error('Error al buscar el usuario:', error);
