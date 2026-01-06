@@ -30,7 +30,10 @@ telefono: {
     notEmpty: true,
     unique: true,
     validate: {
-        is: /^(09)[0-9]{7}$/,
+    is: {
+        args: /^(09)[0-9]{7}$/,
+        msg: "Celular inválido"
+    }
     }
 },
 estado: {

@@ -32,7 +32,10 @@ const Usuario = sequelize.define('Usuario', {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            is: /^(09)[0-9]{7}$/,
+        is: {
+            args: /^(09)[0-9]{7}$/,
+            msg: "Celular inválido"
+        }
         }
     }
 }, {

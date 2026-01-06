@@ -51,7 +51,8 @@ router.put('/editar/:id', async (req,res) => {
                 estado: estado
             },
             {
-                where : {id : id}
+                where : {id : id},
+                validate: true
             }
         );
         res.status(200).json({ message: 'Cliente editado exitosamente', clienteActualizado });
