@@ -28,7 +28,10 @@ telefono: {
     type: DataTypes.STRING,
     allowNull: false,
     notEmpty: true,
-    unique: true
+    unique: true,
+    validate: {
+        is: /^(09)[0-9]{7}$/,
+    }
 },
 estado: {
     type: DataTypes.STRING,
