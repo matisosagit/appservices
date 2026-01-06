@@ -1,8 +1,4 @@
-import express from 'express';
-import { DataTypes } from 'sequelize';
-import conectarBD from '../conexion.js';
 import { Router } from 'express';
-import sesion from '../sesion.js';
 import bcrypt from "bcryptjs";
 import {Usuario} from '../modelos/usuario.js';
 

@@ -1,9 +1,9 @@
 import express from "express";
 
-import conectarBD from "./conexion.js";
+import sequelize from "./conexion.js";
 import sesion from "./sesion.js";
-import rutasUsuario from "./usuarios.js";
-import router from "./clientes.js";
+import rutasUsuario from "./rutas/usuarios.js";
+import router from "./rutas/clientes.js";
 
 import cors from "cors";
 
@@ -24,7 +24,7 @@ app.use("/api/clientes", router);
 
 (async () => {
   try {
-    const sequelize = await conectarBD();
+    await sequelize.authenticate();
     await sequelize.sync({ force: false });
 
     const PORT = process.env.PORT || 3000;

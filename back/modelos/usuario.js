@@ -1,7 +1,6 @@
 import { DataTypes } from 'sequelize';
-import conectarBD from './conexion.js';
+import sequelize from './conexion.js';
 
-const sequelize = await conectarBD();
 
 const Usuario = sequelize.define('Usuario', {
     id: {

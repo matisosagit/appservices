@@ -1,5 +1,3 @@
-import { Sequelize, DataTypes } from 'sequelize';
-import conectarBD from '../conexion.js';
 import { Router } from 'express';
 import { nanoid } from 'nanoid';
 import {Cliente} from '../modelos/cliente.js';
