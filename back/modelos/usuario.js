@@ -11,12 +11,20 @@ const Usuario = sequelize.define('Usuario', {
     nombre: {
         type: DataTypes.STRING,
         allowNull: false,
-        notEmpty: true
+        validate: {
+            notEmpty: {
+                msg: "Este campo no puede estar vacio"
+            }
+        }
     },
     contraseña: {
         type: DataTypes.STRING,
         allowNull: false,
-        notEmpty: true
+        validate: {
+            notEmpty: {
+                msg: "Este campo no puede estar vacio"
+            }
+        }
     },
     correo: {
         type: DataTypes.STRING,
@@ -24,7 +32,9 @@ const Usuario = sequelize.define('Usuario', {
         allowNull: false,
         validate: {
             isEmail: true,
-            notEmpty: true
+            notEmpty: {
+                msg: "Este campo no puede estar vacio"
+            }
         }
     },
     telefono: {

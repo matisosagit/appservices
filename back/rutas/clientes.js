@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { nanoid } from 'nanoid';
-import {Cliente} from '../modelos/cliente.js';
+import Cliente from '../modelos/cliente.js';
 
 
 const router = Router();

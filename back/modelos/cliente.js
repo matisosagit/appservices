@@ -10,29 +10,43 @@ type: DataTypes.INTEGER,
 },
 usuario_id: {
     allowNull: false,
-    notEmpty: true,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+        validate: {
+            notEmpty: {
+                msg: "Este campo no puede estar vacio"
+            }
+        }
 },
 nombre: {
     allowNull: false,
-    notEmpty: true,
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    validate: {
+        notEmpty: {
+            msg: "Este campo no puede estar vacio"
+        }
+    }
 },
 descripcion: {
     allowNull: false,
-    notEmpty: true,
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+        validate: {
+            notEmpty: {
+                msg: "Este campo no puede estar vacio"
+            }
+        }
 },
 telefono: {
     type: DataTypes.STRING,
     allowNull: false,
-    notEmpty: true,
     unique: true,
     validate: {
     is: {
         args: /^(09)[0-9]{7}$/,
         msg: "Celular inválido"
-    }
+    },
+        notEmpty: {
+            msg: "Este campo no puede estar vacio"
+        }
     }
 },
 estado: {
