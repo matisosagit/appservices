@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './paneluser.css';
-
-
 import jsPDF from 'jspdf';
 import Dataimage from './img.js';
 import { useNavigate, Link } from "react-router-dom";
@@ -80,7 +78,6 @@ function  ClientesXml() {
         console.log('Error al obtener el telefono del usuario:', error);
         });
     };
-
 
 
     const boleta = async (nombre, nombrecliente, descripcion, telefonoC, codigoCli, fec) =>{

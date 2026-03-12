@@ -1,186 +1,382 @@
 @import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nabla&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:wght@700&family=Roboto:ital,wght@0,300;1,100;1,300&display=swap');
 
-.paneladmin{
-    display: flex;
-    position: absolute;
-    background: linear-gradient(rgba(90, 90, 90, 0.75), rgba(255, 255, 255, 0.75)), url(./img/fondoservice.png) no-repeat center center ;
-    background-size: cover;
-    justify-content:stretch;
-    justify-items: center;
-    align-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    min-height: calc(100vh - 60px);
-    margin-top: 60px;
-    overflow:auto;
-    top: 0;
-    font-family: "Roboto Mono", monospace;
-    font-optical-sizing: auto;
-    font-style: normal;
+/* ============ VARIABLES ============ */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --primary-light: #3b82f6;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --dark: #1f2937;
+    --light: #f9fafb;
+    --gray: #6b7280;
+    --border-radius: 10px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ============ PANEL PRINCIPAL ============ */
+.paneladmin {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    padding: 1.5rem;
+    background: linear-gradient(rgba(70, 69, 69, 0.7), rgba(255, 255, 255, 0.8)), url(./img/fondoservice.png) no-repeat center/cover fixed;
+    overflow-y: auto;
+    position: relative;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Encabezado */
+.paneladmin h1 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    letter-spacing: -0.5px;
+    width: 100%;
+    flex-basis: 100%;
+}
+
+/* ============ CONTROLES (Botón + Buscador + Link) ============ */
+.controls-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    flex-basis: 100%;
+}
+
+.controls-row button,
+.controls-row input,
+.controls-row a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+}
+
+.controls-row button {
+    white-space: nowrap;
+}
+
+.controls-row input {
+    flex: 0 1 350px;
+    min-width: 280px;
+}
+
+.controls-row a {
+    height: auto;
+    white-space: nowrap;
+}
+
+/* ============ LISTA DE CLIENTES ============ */
 .ulcli {
     display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    justify-content: space-between;
-    justify-items: space-between;
     flex-direction: column;
-    align-items: center;
-    align-content:center ;
-    width: 90%;
-}
-
-.listacliente span{
-    display:block;
-    position: relative;
-    padding: 0.2rem;
-}
-
-.paneladmin h1{
-    display: flex;
-    position: relative;
-    font-size: 3rem;
-    align-items: flex-start;
-    align-content: flex-start;
-    text-shadow: 3px 3px 3px #5b88a5;
-}
-
-.tituloadmin{
-    font-size: 2rem;
-    text-shadow: 3px 3px 3px #5b88a5;
-}
-
-.listacliente{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    gap: 0.8rem;
     list-style: none;
-    margin: 1rem 0rem 0rem -2rem;
-    max-height: 4rem;
-    min-height: fit-content;
-    justify-content: space-between;
-    text-align: left;
-    justify-items:center;
-    justify-self: center;
-    align-self: center;
-    align-items:center;
-    align-content: center;
-    background-color: #5b88a5;
-    background-size: cover;
-    padding: 0.5rem;
-    border-radius: 20px;
-    flex-wrap: nowrap;
-    min-width: 90vw;
-    flex-grow: 1;
-    font-size: clamp(.7rem, 0.3vw + 0.3rem, 3rem);
-    
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 1400px;
+    flex-basis: 100%;
 }
 
+.ulcli > p {
+    color: var(--dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* ============ BUSCADOR ============ */
 .inputbuscador {
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    align-content: center;
-    width: 15rem;
-    height: 2rem;
-    margin: 50px;
-    border: 2px solid #000;
-    border-radius: 10px;
-    background-color: rgba(144, 238, 144, 0.438);
+    height: 2.5rem;
+    padding: 0 1.5rem;
+    font-size: 0.95rem;
+    border: 2px solid var(--primary);
+    border-radius: var(--border-radius);
+    background-color: white;
+    color: var(--dark);
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex: 0 1 350px;
+    min-width: 280px;
+    box-sizing: border-box;
+    line-height: 2.5rem;
 }
 
-
-.listabotones{
-    display:flex;
-    position: relative;
-    flex-direction: row;
-    list-style: none;
-    justify-content: space-evenly;
-    justify-items:center;
-    align-items:center;
-    align-content: center;
-    flex-wrap: wrap;
-    align-self: flex-end;
-    justify-self: flex-end;
+.inputbuscador:focus {
+    outline: none;
+    border-color: var(--primary-dark);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+.inputbuscador::placeholder {
+    color: var(--gray);
+}
 
+/* ============ BOTONES ============ */
+.btn2,
+.btn3,
+.btnboleta,
+.btncerrarsesion {
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
 
-.btn2{
-
-    background: #5b88a5;
-    color: #fff;
-    border:2px solid #000000;
-    border-radius: 30px;
-    transition: all .3s ease-in-out;
-    }
+/* Botón Añadir Cliente */
+.btn2 {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 0.65rem 1.8rem;
+    height: 2.5rem;
+}
 
 .btn2:hover {
-    background: linear-gradient(45deg, rgb(47, 137, 255), rgb(30, 255, 169));
-    transition: all .3s ease-in-out;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
-.btn3{
-    display: flex;
+.btn2:active {
+    transform: translateY(0);
+}
 
-    background: #dd322c;
-    color: #fff;
-    border:2px solid #000000;
-    border-radius: 30px;
-    transition: all .3s ease-in-out;
-    align-items: flex-end;
-    justify-content: flex-end;
-    }
+/* Botón Eliminar */
+.btn3 {
+    background: linear-gradient(135deg, var(--danger) 0%, #f87171 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+}
 
 .btn3:hover {
-    background: linear-gradient(45deg, rgb(47, 137, 255), rgb(30, 255, 169));
-    transition: all .3s ease-in-out;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
-.btnboleta{
-    display: flex;
-    background: #61d315;
-    color: #fff;
-    border:2px solid #000000;
-    border-radius: 30px;
-    align-items: flex-end;
-    justify-content: flex-end;
-    }
+.btn3:active {
+    transform: translateY(0);
+}
+
+/* Botón Boleta */
+.btnboleta {
+    background: linear-gradient(135deg, var(--success) 0%, #34d399 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
 
 .btnboleta:hover {
-    background: linear-gradient(45deg, rgb(47, 137, 255), rgb(30, 255, 169));
-    transition: all .3s ;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
+.btnboleta:active {
+    transform: translateY(0);
+}
+
+/* Botón Cerrar Sesión */
+.btncerrarsesion {
+    color: var(--dark);
+    padding: 0.4rem .9rem;
+    font-size: 0.6rem;
+    height: auto;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    z-index: 100;
+}
+
+.btncerrarsesion:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.btncerrarsesion:active {
+    transform: translateY(0);
+}
+
+/* ============ FILAS DE LA TABLA ============ */
+.listacliente {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) auto;
+    gap: 1.2rem;
+    list-style: none;
+    padding: 1rem 1.25rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    transition: var(--transition);
+    border-left: 4px solid var(--primary);
+}
+
+/* Encabezado de tabla */
+.listacliente:first-of-type {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    font-weight: 600;
+    border-left: none;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.listacliente:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.listacliente span {
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+    color: var(--dark);
+    font-size: 0.95rem;
+}
+
+.listacliente:first-of-type span {
+    color: white;
+    font-weight: 600;
+}
 
 .descripcioncliente {
-    display: block;
-    position: absolute;
-    min-width: 100%;
-    min-height: fit-content;
-    overflow-wrap: break-word; 
-    word-break:break-word; 
-    overflow-y: hidden;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
 }
 
-
-
-#iddiv1 {
+/* ============ CONTENEDOR DE BOTONES ============ */
+.listabotones {
     display: flex;
-    background: linear-gradient(rgba(90, 90, 90, 0.75), rgba(255, 255, 255, 0.75)), url(./img/fondoservice.png) no-repeat center center;
-    background-size: cover;
-    justify-content: center;
-    justify-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* ============ ENLACE ============ */
+.paneladmin a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    padding: 0.65rem 1.2rem;
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    display: inline-flex;
     align-items: center;
-    width: auto;
-    height: 100vh;
-    flex-direction: row;
-    flex-wrap: wrap; 
-    gap: 2rem; 
-    padding: 2rem;
-    overflow-x: hidden; 
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+.paneladmin a:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ============ RESPONSIVO ============ */
+@media (max-width: 1024px) {
+    .paneladmin {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .paneladmin h1 {
+        font-size: 2rem;
+    }
+
+    .listacliente {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) auto;
+        padding: 0.75rem;
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .paneladmin {
+        padding: 0.75rem;
+        gap: 0.8rem;
+        grid-template-rows: auto auto auto 1fr;
+    }
+
+    .paneladmin h1 {
+        font-size: 1.5rem;
+    }
+
+    .paneladmin > button:first-of-type,
+    .paneladmin > input,
+    .paneladmin > a {
+        grid-row: 2;
+    }
+
+    .paneladmin > button:first-of-type {
+        justify-self: center;
+        order: 1;
+    }
+
+    .paneladmin > input {
+        justify-self: center;
+        order: 2;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .paneladmin > a {
+        justify-self: center;
+        order: 3;
+    }
+
+    .listacliente {
+        grid-template-columns: 1fr;
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .listacliente span {
+        font-size: 0.85rem;
+    }
+
+    .listabotones {
+        gap: 0.25rem;
+    }
+
+    .btn2,
+    .btn3,
+    .btnboleta {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .inputbuscador {
+        height: 2.2rem;
+        font-size: 0.9rem;
+    }
+
+    .btncerrarsesion {
+        top: 110px;
+        padding: 0.4rem .9rem;
+        font-size: 0.5rem;
+    }
 }
 
 

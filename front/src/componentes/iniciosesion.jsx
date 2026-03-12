@@ -33,7 +33,7 @@ function FormularioInicio () {
                 setNombre('');
                 setContraseña('');
                 setTimeout(() => {
-                    setRedirigir(true);
+                setRedirigir(true);
                 }, 300);
             }else{
                 setMensaje(data.message || 'Error al iniciar sesión');

@@ -161,7 +161,23 @@ function  ListaClientes() {
     setClientes(prevClientes => [...prevClientes, nuevoCliente]); 
   };
 
-
+  const cerrarSesion = () => {
+    fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/cerrar-sesion`, {
+        method: 'POST',
+        credentials: 'include'
+    })
+    .then(res => {
+        if (res.ok) {
+            setNombre("");
+            navigate("/Ingreso");
+        } else {
+            console.error('Error al cerrar sesión');
+        }
+    })
+    .catch(error => {
+        console.error('Error al cerrar sesión:', error);
+    });
+  }
 
   const verFormCliente = () => {
     setMostrarFormularioCliente(true);
@@ -170,7 +186,7 @@ function  ListaClientes() {
   const ocultarFormCliente = () => {
     setMostrarFormularioCliente(false);
   };
-
+  
   useEffect(() => {
     if (!cargando && nombre === null) {
       navigate("/Ingreso");
@@ -189,18 +205,20 @@ function  ListaClientes() {
     return (
       <div className="paneladmin">
         <h1>Hola, {nombre}</h1>
-        <button className="btn2" onClick={verCliente}>Añadir Cliente</button>
-        <input
-        className="inputbuscador"
-        type="text"
-        value={filtro}
-        onChange={(e) => setFiltro(e.target.value)}
-        placeholder="Buscar por nombre"
-        />
-        <Link to="/HistorialClientes">Ver historial completo aqui.</Link>
+        <div className="controls-row">
+          <button className="btn2" onClick={verCliente}>Añadir Cliente</button>
+          <input
+          className="inputbuscador"
+          type="text"
+          value={filtro}
+          onChange={(e) => setFiltro(e.target.value)}
+          placeholder="Buscar por nombre"
+          />
+          <Link to="/HistorialClientes">Ver historial completo aqui.</Link>
+        </div>
         {mostrarFormulario && <FormCliente agregarCliente={agregarCliente} ocultarForm={ocultarForm} fetchClientes={fetchClientes} />}
         
-        
+        <button className="btncerrarsesion" onClick={() => cerrarSesion()}>Cerrar Sesión</button>
         <ul className="ulcli">
           <p>Lista de clientes.</p>
             <li className="listacliente">

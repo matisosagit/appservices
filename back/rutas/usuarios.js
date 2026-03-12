@@ -1,121 +1,25 @@
 import { Router } from 'express';
 import bcrypt from "bcryptjs";
 import Usuario from '../modelos/usuario.js';
+import user from '../controladores/user.Controllers.js';
 
 const router = Router();
 
-const hashPassword = async (password) => {
+/* const hashPassword = async (password) => {
     const saltRounds = 10; 
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     return hashedPassword;
-};
+}; */
 
+router.post('/crear-usuario', async (req,res) => user.crearUsuario(req,res));
 
-router.post('/crear-usuario', async (req,res)=>{
-    const{nombre, contraseña, correo, telefono} = req.body;
-    const contraseñaHasheada = await hashPassword(contraseña);
+router.post('/iniciar-sesion', async (req,res)=> user.iniciarSesion(req,res));
 
-    try{
-        const usuario = await Usuario.create(
-        {
-            nombre: nombre,
-            contraseña: contraseñaHasheada,
-            correo: correo,
-            telefono: telefono
-        },
-        {fields:['nombre', 'contraseña', 'correo', 'telefono']}
-        );
-        req.session.usuarioId = usuario.id;
-        res.status(201).json({ message: 'Usuario creado exitosamente', usuario });
+router.post('/cerrar-sesion', user.cerrarSesion);
 
-    } catch(error){
-        console.error(error);
-        res.status(500).json({ message: 'Error al crear el usuario' });
-    }
-});
+router.get('/nombre', async (req, res) => user.obtenerNombreUsuario(req, res));
 
-router.post('/iniciar-sesion', async (req,res)=>{
-    const{nombre, contraseña} = req.body;
-
-    const usuarioFind = await  Usuario.findOne(
-        {where: {
-            nombre: nombre,
-        }});
-    if(usuarioFind){
-        const esCorrecta = await bcrypt.compare(contraseña, usuarioFind.contraseña);
-        if (esCorrecta) {
-            req.session.usuarioId = usuarioFind.id;
-            req.session.nombre = usuarioFind.nombre;
-    
-            req.session.save((err) => {
-            if (err) {
-                console.error("Error al guardar la sesión:", err);
-                return res.status(500).json({ message: 'Error al procesar la sesión' });
-            }
-
-            console.log("Sesión guardada y confirmada");
-            return res.status(200).json({ 
-                message: 'Sesión iniciada exitosamente', 
-                usuarioFind 
-            });
-    });
-
-} else {
-    return res.status(401).json({ message: 'Contraseña incorrecta.' });
-}
-    }else{
-        return res.status(404).json({message: 'Error al iniciar sesión, usuario no encontrado'});
-    }
-
-});
-
-router.get('/nombre', async (req, res) => {
-    if (!req.session || !req.session.usuarioId) {
-        console.log("Resultado: FALLO - No hay usuarioId en sesión");
-        return res.status(401).json({ message: "No autorizado: sesión vacía" });
-    }
-
-    try {
-        const usuario = await Usuario.findByPk(req.session.usuarioId);
-        if (!usuario) {
-            console.log("Resultado: FALLO - ID existe pero no está en la DB");
-            return res.status(401).json({ message: "Usuario no existe" });
-        }
-        console.log("Resultado: ÉXITO - Usuario encontrado:", usuario.nombre);
-        return res.json({ nombre: usuario.nombre });
-    } catch (error) {
-        console.error("Error en DB:", error);
-        return res.status(500).json({ message: "Error de base de datos" });
-    }
-});
-
-/* router.get('/nombre', async (req, res) => {
-    try {
-        if (req.session && req.session.nombre) {
-            return res.json({ nombre: req.session.nombre });
-        } else {
-            return res.status(401).json({ message: 'No hay sesión iniciada' });
-        }
-    } catch (error) {
-        console.error('Error al buscar el usuario:', error);
-        res.status(500).json({ message: 'Error interno del servidor' });
-    }
-}); */
-
-router.get('/telefono', async (req, res) => {
-    try {
-        const usuario = await Usuario.findByPk(req.session.usuarioId);
-        
-        if (usuario) {
-            res.json({ telefono: usuario.telefono });
-        } else {
-            res.status(401).json({ message: 'No hay sesión iniciada' });
-        }
-    } catch (error) {
-        console.error('Error al buscar el usuario:', error);
-        res.status(500).json({ message: 'Error interno del servidor' });
-    }
-});
+router.get('/telefono', async (req, res) => user.obtenerTelefonoUsuario(req, res));
 
 
 export default router;
