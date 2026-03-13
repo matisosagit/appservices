@@ -116,7 +116,6 @@ function  ClientesXml() {
     }, []);
     
     
-
     useEffect(() => {
         if (!cargando && !nombre) {
         navigate("/Ingreso");
@@ -128,14 +127,16 @@ function  ClientesXml() {
         return (
         <div className="paneladmin">
             <h1>Hola, {nombre}</h1>
-            <Link to="/Clientes">Volver</Link>
-            <input
-            className="inputbuscador"
-            type="text"
-            value={filtro}
-            onChange={(e) => setFiltro(e.target.value)}
-            placeholder="Buscar por nombre"
-            />
+            <div className="controls-row">
+                <Link to="/Clientes">Volver</Link>
+                <input
+                className="inputbuscador"
+                type="text"
+                value={filtro}
+                onChange={(e) => setFiltro(e.target.value)}
+                placeholder="Buscar por nombre"
+                />
+            </div>
             <ul className="ulcli">
             <p>Lista completa de clientes.</p>
                 <li className="listacliente">
