@@ -258,10 +258,8 @@
 }
 
 .descripcioncliente {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 200px;
+    word-break: break-word;
+    max-width: 300px; /* Aumenté el ancho máximo para mostrar más texto */
 }
 
 /* ============ CONTENEDOR DE BOTONES ============ */
