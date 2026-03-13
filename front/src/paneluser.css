@@ -259,7 +259,7 @@
 
 .descripcioncliente {
     word-break: break-word;
-    max-width: 300px; /* Aumenté el ancho máximo para mostrar más texto */
+    max-width: 80%; /* Aumenté el ancho máximo para mostrar más texto */
 }
 
 /* ============ CONTENEDOR DE BOTONES ============ */
