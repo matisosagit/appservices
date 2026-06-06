@@ -1,4 +1,5 @@
 import Cliente from "../modelos/cliente.js";
+import { nanoid } from 'nanoid';
 
 export const crearCliente = async (req, res) => {
     const usuarioId = req.session.usuarioId;
